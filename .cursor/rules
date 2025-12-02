@@ -1,4 +1,5 @@
 This is an app to show and change display resolution of a macOS system.
 
-- It uses last Swift APIs
-- It targest latest macOS version
+- Uses latest Swift and SwiftUI features available
+- Targest latest macOS version
+- Uses Tuist for project generation
