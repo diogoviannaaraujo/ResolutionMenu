@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import Observation
+import ServiceManagement
 
 /// ViewModel for the menu bar app, managing display state.
 @MainActor
@@ -8,6 +9,11 @@ import Observation
 class AppViewModel {
     var displays: [DisplayInfo] = []
     var pinnedResolutions: Set<PinnedResolutionService.PinnedItem> = []
+    var startOnBoot: Bool = false {
+        didSet {
+            updateStartOnBoot()
+        }
+    }
     
     private let displayService = DisplayService()
     private let pinnedService = PinnedResolutionService()
@@ -15,6 +21,25 @@ class AppViewModel {
     init() {
         refreshDisplays()
         pinnedResolutions = pinnedService.getPinnedResolutions()
+        startOnBoot = SMAppService.mainApp.status == .enabled
+    }
+    
+    private func updateStartOnBoot() {
+        do {
+            if startOnBoot {
+                if SMAppService.mainApp.status != .enabled {
+                    try SMAppService.mainApp.register()
+                }
+            } else {
+                if SMAppService.mainApp.status == .enabled {
+                    try SMAppService.mainApp.unregister()
+                }
+            }
+        } catch {
+            print("Failed to update start on boot: \(error)")
+            // Revert the state if operation failed
+            startOnBoot = SMAppService.mainApp.status == .enabled
+        }
     }
     
     func refreshDisplays() {

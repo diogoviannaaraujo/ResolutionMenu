@@ -9,6 +9,12 @@ struct ResolutionMenuApp: App {
             ResolutionListView(viewModel: viewModel)
         }
         .menuBarExtraStyle(.window)
+        
+        Window("Settings", id: "settings") {
+            SettingsView(viewModel: viewModel)
+        }
+        .windowResizability(.contentSize)
+        .defaultSize(width: 350, height: 100)
     }
 }
 

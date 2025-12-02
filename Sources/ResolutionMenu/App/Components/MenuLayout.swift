@@ -3,7 +3,7 @@ import SwiftUI
 struct DetailHeaderView: View {
     let title: String
     let onBack: () -> Void
-    
+
     var body: some View {
         HStack {
             Button(action: onBack) {
@@ -14,10 +14,10 @@ struct DetailHeaderView: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-       
+
             Text(title)
                 .font(.headline)
-            
+
             Spacer()
         }
         .padding()
@@ -32,11 +32,11 @@ struct MenuHeaderView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 24, height: 24)
-            
+
             Text("ResolutionMenu")
                 .font(.headline)
                 .fontWeight(.semibold)
-            
+
             Spacer()
         }
         .padding()
@@ -45,11 +45,23 @@ struct MenuHeaderView: View {
 }
 
 struct MenuFooterView: View {
+    let onSettings: () -> Void
     let onQuit: () -> Void
-    
+
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
+
+            Button(action: onSettings) {
+                Image(systemName: "gear")
+                    .fontWeight(.semibold)
+                    .contentShape(Rectangle())
+            }
+            .help("Settings")
+            .buttonStyle(.plain)
+            .padding()
+            
             Spacer()
+
             Button(action: onQuit) {
                 Image(systemName: "power")
                     .fontWeight(.semibold)
@@ -63,4 +75,3 @@ struct MenuFooterView: View {
         .background(Color(nsColor: .windowBackgroundColor))
     }
 }
-

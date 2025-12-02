@@ -3,6 +3,7 @@ import SwiftUI
 struct ResolutionListView: View {
     var viewModel: AppViewModel
     @State private var currentRoute: NavigationRoute? = nil
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         ZStack {
@@ -48,9 +49,12 @@ struct ResolutionListView: View {
                     
                     Divider()
                     
-                    MenuFooterView {
+                    MenuFooterView(onSettings: {
+                        openWindow(id: "settings")
+                        NSApp.activate(ignoringOtherApps: true)
+                    }, onQuit: {
                         viewModel.quitApp()
-                    }
+                    })
                 }
                 .transition(.move(edge: .leading))
             }
