@@ -13,11 +13,13 @@ let project = Project(
                 "LSUIElement": true,
                 "CFBundleDisplayName": "Resolution Menu",
                 "CFBundleShortVersionString": "1.0",
-                "CFBundleVersion": "1"
+                "CFBundleVersion": "1",
             ]),
             sources: ["Sources/ResolutionMenu/**"],
+            resources: [
+                "Resources/AppIcon.icon",
+            ],
             dependencies: []
         )
     ]
 )
-

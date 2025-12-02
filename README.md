@@ -14,7 +14,8 @@ swift build -c release
 
 1. Install Tuist (if not already installed):
    ```bash
-   curl -Ls https://install.tuist.io | bash
+   brew tap tuist/tuist
+   brew install --formula tuist
    ```
 
 2. Generate the Xcode project:
