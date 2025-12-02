@@ -1,0 +1,4 @@
+This is an app to show and change display resolution of a macOS system.
+
+- It uses last Swift APIs
+- It targest latest macOS version

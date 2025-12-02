@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ResolutionMenu}",
+            "name": "Debug ResolutionMenu",
+            "program": "${workspaceFolder:ResolutionMenu}/.build/debug/ResolutionMenu",
+            "preLaunchTask": "swift: Build Debug ResolutionMenu"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ResolutionMenu}",
+            "name": "Release ResolutionMenu",
+            "program": "${workspaceFolder:ResolutionMenu}/.build/release/ResolutionMenu",
+            "preLaunchTask": "swift: Build Release ResolutionMenu"
+        }
+    ]
+}
